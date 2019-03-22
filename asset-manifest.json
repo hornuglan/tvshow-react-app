@@ -1,14 +1,13 @@
 {
-  "main.css": "/tvshows-react-app/static/css/main.50d86483.chunk.css",
-  "main.js": "/tvshows-react-app/static/js/main.9d50468c.chunk.js",
-  "main.js.map": "/tvshows-react-app/static/js/main.9d50468c.chunk.js.map",
+  "main.css": "/tvshows-react-app/static/css/main.70d36cb0.chunk.css",
+  "main.js": "/tvshows-react-app/static/js/main.d6b36a26.chunk.js",
+  "main.js.map": "/tvshows-react-app/static/js/main.d6b36a26.chunk.js.map",
   "runtime~main.js": "/tvshows-react-app/static/js/runtime~main.de279a21.js",
   "runtime~main.js.map": "/tvshows-react-app/static/js/runtime~main.de279a21.js.map",
-  "static/js/2.8f71a45e.chunk.js": "/tvshows-react-app/static/js/2.8f71a45e.chunk.js",
-  "static/js/2.8f71a45e.chunk.js.map": "/tvshows-react-app/static/js/2.8f71a45e.chunk.js.map",
+  "static/js/2.0003f116.chunk.js": "/tvshows-react-app/static/js/2.0003f116.chunk.js",
+  "static/js/2.0003f116.chunk.js.map": "/tvshows-react-app/static/js/2.0003f116.chunk.js.map",
   "index.html": "/tvshows-react-app/index.html",
-  "precache-manifest.108a357c00e56d42acfbd8e8b90bf067.js": "/tvshows-react-app/precache-manifest.108a357c00e56d42acfbd8e8b90bf067.js",
+  "precache-manifest.0211ae72fb1f8f4cacc6c34b176060fd.js": "/tvshows-react-app/precache-manifest.0211ae72fb1f8f4cacc6c34b176060fd.js",
   "service-worker.js": "/tvshows-react-app/service-worker.js",
-  "static/css/main.50d86483.chunk.css.map": "/tvshows-react-app/static/css/main.50d86483.chunk.css.map",
-  "static/media/logo.svg": "/tvshows-react-app/static/media/logo.5d5d9eef.svg"
+  "static/css/main.70d36cb0.chunk.css.map": "/tvshows-react-app/static/css/main.70d36cb0.chunk.css.map"
 }
