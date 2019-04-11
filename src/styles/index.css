@@ -1,0 +1,166 @@
+/* general styles */
+html, body {
+  box-sizing: border-box;
+  color: black;
+  overflow-x: hidden;
+  background-color: #d2c3b2;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+/* .sticky {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 145px;
+} */
+
+/* styles for header */
+.page-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  background-color: #d2c3b2;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+}
+
+/* styles for search input */
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  outline: 0;
+  height: 42px;
+  width: 244px;
+  line-height: 42px;
+  padding: 0 16px;
+  background-color: rgb(243, 233, 220);
+  color: #212121;
+  font-size: 16px;
+  border: 0;
+  float: left;
+  -webkit-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-input:focus {
+  outline: 0;
+  background-color: white;
+}
+
+.search-button {
+  outline: 0;
+  background: none;
+  background-color: rgba(38, 50, 56, 0.8);
+  float: left;
+  height: 42px;
+  width: 42px;
+  text-align: center;
+  line-height: 42px;
+  border: 0;
+  color: #FFF;
+  font-size: 16px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: rgba(38, 50, 56, 0.6);
+}
+
+/* styles for pagination */
+.pagination {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.pagination li a {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li {
+  background-color: rgba(38, 50, 56, 0.8);
+}
+
+.pagination a {
+  font-weight: 300;
+  padding-top: 1px;
+  text-decoration:none;  
+  border: 1px solid rgba(0,0,0,.25);
+  border-left-width: 0;
+  min-width:44px;
+  min-height:44px;
+  color: rgba(255,255,255,.85);  
+  box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.35);
+}
+
+.pagination li a:hover { 
+  background-color: rgba(255,255,255,.2);
+}
+
+/* styles for filter */
+select {
+  width: 100%;
+}
+
+/* general styles for table */
+table {
+  width: 100%;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 141px;
+}
+
+table, tr, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* styles for table header */
+.thead-cell {
+  background-color: rgba(38, 50, 56, 0.8);
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+/* styles for table body */
+.tbody-cell {
+  background-color: rgb(160, 188, 212);
+}
+
+img {
+  width: 320px;
+}
+
+.tbody-cell:first-of-type {
+  background-color: rgba(38, 50, 56, 0.8);
+  color: white;
+}
+
