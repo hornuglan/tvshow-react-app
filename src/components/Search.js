@@ -7,7 +7,7 @@ class Search extends React.Component {
         if(event.charCode === 13) {
             this.props.searchShow(this.queryRef.current.value);
         } else {
-            console.log('error');
+            console.log('Error in search using keycode');
         }
     }
     render() {

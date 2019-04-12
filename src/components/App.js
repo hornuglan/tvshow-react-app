@@ -25,9 +25,7 @@ class App extends React.Component {
     };
 
     createUrl = (pageNumber, query) => {
-        // return `https://api.trakt.tv/shows/watched?extended=full&page=${pageNumber}&limit=15`;
-        // Устанавливаем поисковый запрос, если нужно или берем его из стейта.
-        // Если нужно добавляем в url и pageNumber.
+        //generating search request, adding page number or query if necessary
         query = query || this.state.query;
         if (pageNumber && query) {
             return `https://api.trakt.tv/shows/watched?extended=full&page=${pageNumber}&limit=15&query=${query}`
@@ -76,23 +74,22 @@ class App extends React.Component {
         this.setState({
             query: query
         })
-        // this.loadData(this.createUrl(1, query));
         this.loadData(traktSearchUrl);
 
     }
 
+    //general function to define when and how to sort by year and by title
     applySortRules = (fieldName, type) => {
-        console.log(this.state.sortRules);
+        // console.log(this.state.sortRules);
         fieldName = fieldName || this.state.sortRules.fieldName;
         type = type || this.state.sortRules.type;
         if (fieldName === "year") {
             if (type === ASC_ORDER) {
-                console.log("второе действие")
                 this.sortField(((a,b) => a.show.year - b.show.year), fieldName, type)
             } else if (type === DESC_ORDER) {
                 this.sortField(((a,b) => b.show.year - a.show.year), fieldName, type)
             } else {
-                console.log("OCHEN ERROR, CHOTO-TO SLOMALOS V YEAR")
+                console.log("Error occured in applySortRules with year sorting")
             }
         }
 
@@ -120,7 +117,7 @@ class App extends React.Component {
                   };
                 this.sortField(compareReverse, fieldName, type);
             } else {
-                console.log("OCHEN ERROR, CHOTO-TO SLOMALOS V TITLE")
+                console.log("Error occured in applySortRules with title sorting")
             }
         }
     }
@@ -146,7 +143,6 @@ class App extends React.Component {
     sortField = (compare, fieldName, type) => {
         const data = this.state.data;
         console.log(data);
-        console.log("третье действие");
         data.sort(compare);
         this.setState({
             data: data,

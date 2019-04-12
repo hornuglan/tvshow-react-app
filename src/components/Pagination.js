@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
+//function to define when to renew pagination line
 const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
     let range = [];
     let threshold = Math.min(pageCount, leftBorder + 9);
@@ -20,15 +21,18 @@ const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
     return { leftBorder, rightBorder, range };
 }
 
+//moving to the next page
 const increment = (targetPage, pageCount, changePage, leftBorder, rightBorder) => {
     if(targetPage < pageCount)
     changePage(targetPage + 1, leftBorder, rightBorder);
   }
 
+//moving to the previous page
   const decrement = (targetPage, pageCount, changePage, leftBorder, rightBorder) => {
     if(targetPage < pageCount)
     changePage(targetPage - 1, leftBorder, rightBorder);
   }
+
 
 const Pagination = (props) => {
     const { leftBorder, rightBorder, range } = pageRange(props.pageState.pageNumber, props.pageState.leftBorder, props.pageState.rightBorder, props.pageCount);
