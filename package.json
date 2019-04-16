@@ -37,6 +37,7 @@
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "react-test-renderer": "^16.8.6",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6"
   }
 }
