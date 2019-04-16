@@ -7,7 +7,12 @@ import { pageRange, Pagination } from './Pagination';
 const Header = (props) => (
     <div className='page-header'>
         <Search searchShow={props.searchShow} query={props.query}/>
-        <Pagination changePage={props.changePage} pageCount={props.pageCount} pageState={props.pageState}/>
+        <Pagination 
+            changePage={props.changePage} 
+            pageCount={props.pageCount} 
+            pageState={props.pageState} 
+            setPage={props.setPage}
+        />
     </div>
 )
 

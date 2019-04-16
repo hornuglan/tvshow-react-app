@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { setPage } from '../store/actions/allActions/paginationActions';
 
 //function to define when to renew pagination line
 const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
@@ -37,6 +38,9 @@ const increment = (targetPage, pageCount, changePage, leftBorder, rightBorder) =
 const Pagination = (props) => {
     const { leftBorder, rightBorder, range } = pageRange(props.pageState.pageNumber, props.pageState.leftBorder, props.pageState.rightBorder, props.pageCount);
     return (<ul className='pagination'>
+        <li>
+            <a href='#' onClick={() => props.setPage(100, 100, 110)}>REDUX</a>
+        </li>
         <li>
             <a href='#' className='first-page' onClick={() => props.changePage(1, 1, 10)}>&#8810;</a>
         </li>

@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from './Header';
+import Table from './Table';
+import { setPage } from '../store/actions/allActions/paginationActions';
 
 import '../styles/index.css';
 
@@ -28,7 +31,9 @@ class App extends React.Component {
         //generating search request, adding page number or query if necessary
         query = query || this.state.query;
         if (pageNumber && query) {
-            return `https://api.trakt.tv/shows/watched?extended=full&page=${pageNumber}&limit=15&query=${query}`
+            return `https://api.trakt.tv/search/show?extended=full&page=${pageNumber}&limit=15&query=${query}`
+        } else if (query) {
+            return `https://api.trakt.tv/search/show?extended=full&query=${query}`
         } else if (pageNumber) {
             return `https://api.trakt.tv/shows/watched?extended=full&page=${pageNumber}&limit=15`
         } else {
@@ -69,12 +74,11 @@ class App extends React.Component {
 
     //shows search
     searchShow = (query) => {
-        const traktSearchUrl = `https://api.trakt.tv/search/show?extended=full&query=${query}`;
-        if(query === '') return;
+        if (query === '') return;
         this.setState({
             query: query
         })
-        this.loadData(traktSearchUrl);
+        this.loadData(this.createUrl(this.state.pageNumber, query));
 
     }
 
@@ -85,9 +89,9 @@ class App extends React.Component {
         type = type || this.state.sortRules.type;
         if (fieldName === "year") {
             if (type === ASC_ORDER) {
-                this.sortField(((a,b) => a.show.year - b.show.year), fieldName, type)
+                this.sortField(((a, b) => a.show.year - b.show.year), fieldName, type)
             } else if (type === DESC_ORDER) {
-                this.sortField(((a,b) => b.show.year - a.show.year), fieldName, type)
+                this.sortField(((a, b) => b.show.year - a.show.year), fieldName, type)
             } else {
                 console.log("Error occured in applySortRules with year sorting")
             }
@@ -95,26 +99,26 @@ class App extends React.Component {
 
         if (fieldName === "title") {
             if (type === ASC_ORDER) {
-            const compare = (a, b) => {
-                if(a.show.title > b.show.title) {
-                    return 1;
-                }
-                if(a.show.title < b.show.title) {
-                    return -1;
-                }
-                return 0;
-              };
+                const compare = (a, b) => {
+                    if (a.show.title > b.show.title) {
+                        return 1;
+                    }
+                    if (a.show.title < b.show.title) {
+                        return -1;
+                    }
+                    return 0;
+                };
                 this.sortField(compare, fieldName, type);
             } else if (type === DESC_ORDER) {
                 const compareReverse = (a, b) => {
-                    if(a.show.title > b.show.title) {
+                    if (a.show.title > b.show.title) {
                         return -1;
                     }
-                    if(a.show.title < b.show.title) {
+                    if (a.show.title < b.show.title) {
                         return 1;
                     }
                     return 0;
-                  };
+                };
                 this.sortField(compareReverse, fieldName, type);
             } else {
                 console.log("Error occured in applySortRules with title sorting")
@@ -125,18 +129,18 @@ class App extends React.Component {
     //sorting shows by year
     sortByYear = () => {
         if (this.state.sortRules.fieldName === "year" && this.state.sortRules.type === ASC_ORDER) {
-            this.applySortRules('year', DESC_ORDER); 
+            this.applySortRules('year', DESC_ORDER);
         } else {
-            this.applySortRules('year', ASC_ORDER); 
+            this.applySortRules('year', ASC_ORDER);
         }
     }
 
     //sorting shows by title
     sortByTitle = () => {
         if (this.state.sortRules.fieldName === "title" && this.state.sortRules.type === ASC_ORDER) {
-            this.applySortRules('title', DESC_ORDER); 
+            this.applySortRules('title', DESC_ORDER);
         } else {
-            this.applySortRules('title', ASC_ORDER); 
+            this.applySortRules('title', ASC_ORDER);
         }
     }
 
@@ -156,10 +160,10 @@ class App extends React.Component {
     //pagination
     changePage = (pageNumber, leftBorder, rightBorder) => {
         //request for the next/previous page data
-        this.setState({ 
+        this.setState({
             isLoading: true,
-            pageState: {...this.state.pageState, pageNumber, leftBorder, rightBorder}
-         });
+            pageState: { ...this.state.pageState, pageNumber, leftBorder, rightBorder }
+        });
 
         this.loadData(this.createUrl(pageNumber));
     }
@@ -191,37 +195,36 @@ class App extends React.Component {
         if (isLoading) return <div className='loader'></div>;
 
         return (
-            <div className='container'>
-                <Header searchShow={this.searchShow} changePage={this.changePage} pageCount={this.state.pageCount} pageState={this.state.pageState} query={this.state.query}  />
-                <table>
-                    <thead className='table-header'>
-                        <tr className='thead-row'>
-                            <th className='thead-cell'>&#8470;</th>
-                            <th className='thead-cell'>Poster</th>
-                            <th className='thead-cell' onClick={this.sortByTitle}>Title</th>
-                            <th className='thead-cell'>Genres</th>
-                            <th className='thead-cell' onClick={this.sortByYear}>Year</th>
-                            <th className='thead-cell'>Country</th>
-                        </tr>
-                    </thead>
-                    <tbody className='table-body'>
-                        {data.map((item, index) => (
-                            <tr className='tbody-row'>
-                                <td className='tbody-cell'>{index + 1}</td>
-                                <td className='tbody-cell'>
-                                    <img className='poster' alt='' src={item.poster} /> 
-                                </td>
-                                <td className='tbody-cell'>{item.show.title ? item.show.title : ''}</td>
-                                <td className='tbody-cell'>{item.show.genres ? (item.show.genres).join(', ') : ''}</td>
-                                <td className='tbody-cell'>{item.show.year ? item.show.year : ''}</td>
-                                <td className='tbody-cell'>{item.show.country ? item.show.country.toUpperCase() : ''}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <Table
+                setPage={this.props.setPage}
+                data={this.state.data} 
+                searchShow={this.searchShow} 
+                changePage={this.changePage} 
+                pageCount={this.state.pageCount} 
+                pageState={this.state.pageState} 
+                query={this.state.query}
+                sortByTitle={this.sortByTitle}
+                sortByYear={this.sortByYear}
+            />
         )
     }
 }
 
-export default App;
+//connecting data from redux store
+const mapStateToProps = (store) => {
+    console.log(store);
+    store = store.pagination;
+    return {
+            pageNumber: store.pageNumber,
+            leftBorder: store.leftBorder,
+            rightBorder: store.rightBorder
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setPage: (pageNumber) => dispatch(setPage(pageNumber))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
