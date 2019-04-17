@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Header from './Header';
+// import Header from './Header';
 import Table from './Table';
 import { setPage } from '../store/actions/allActions/paginationActions';
 
@@ -28,7 +28,7 @@ class App extends React.Component {
     };
 
     createUrl = (pageNumber, query) => {
-        //generating search request, adding page number or query if necessary
+        //generating search request, adding page number or query for search if necessary
         query = query || this.state.query;
         if (pageNumber && query) {
             return `https://api.trakt.tv/search/show?extended=full&page=${pageNumber}&limit=15&query=${query}`
@@ -190,9 +190,10 @@ class App extends React.Component {
 
     //page rendering
     render() {
+        // eslint-disable-next-line no-unused-vars
         const { isLoading, data } = this.state;
 
-        if (isLoading) return <div className='loader'></div>;
+        if (isLoading) return <div className='lds-ripple'><div></div><div></div></div>;
 
         return (
             <Table
