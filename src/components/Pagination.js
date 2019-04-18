@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { setPage } from '../store/actions/allActions/paginationActions';
+// import { setPage } from '../store/actions/allActions/contentAction';
 
 //function to define when to renew pagination line
 const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
@@ -23,40 +23,37 @@ const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
 }
 
 //moving to the next page
-const increment = (targetPage, pageCount, changePage, leftBorder, rightBorder) => {
+const increment = (targetPage, pageCount, setPage, leftBorder, rightBorder, query) => {
     if(targetPage < pageCount)
-    changePage(targetPage + 1, leftBorder, rightBorder);
+    setPage(targetPage + 1, leftBorder, rightBorder, query);
   }
 
 //moving to the previous page
-  const decrement = (targetPage, pageCount, changePage, leftBorder, rightBorder) => {
+  const decrement = (targetPage, pageCount, setPage, leftBorder, rightBorder, query) => {
     if(targetPage < pageCount)
-    changePage(targetPage - 1, leftBorder, rightBorder);
+    setPage(targetPage - 1, leftBorder, rightBorder, query);
   }
 
 
 const Pagination = (props) => {
-    const { leftBorder, rightBorder, range } = pageRange(props.pageState.pageNumber, props.pageState.leftBorder, props.pageState.rightBorder, props.pageCount);
+    const { leftBorder, rightBorder, range } = pageRange(props.content.pageNumber, props.content.leftBorder, props.content.rightBorder, props.content.pageCount);
     return (<ul className='pagination'>
         <li>
-            <a href='#' onClick={() => props.setPage(100, 100, 110)}>REDUX</a>
+            <a href='#' className='first-page' onClick={() => props.setPage(1, 1, 10, props.content.query)}>&#8810;</a>
         </li>
         <li>
-            <a href='#' className='first-page' onClick={() => props.changePage(1, 1, 10)}>&#8810;</a>
-        </li>
-        <li>
-            <a href='#' className='prev' onClick={() => decrement(props.pageState.pageNumber, props.pageCount, props.changePage, leftBorder, rightBorder)}>&#60;</a>
+            <a href='#' className='prev' onClick={() => decrement(props.content.pageNumber, props.content.pageCount, props.setPage, leftBorder, rightBorder, props.content.query)}>&#60;</a>
         </li>
         {range.map((pageNumber) => (
             <li>
-                <a href='#' onClick={() => props.changePage(pageNumber, leftBorder, rightBorder)}>{pageNumber}</a>
+                <a href='#' onClick={() => props.setPage(pageNumber, leftBorder, rightBorder, props.content.query)}>{pageNumber}</a>
             </li>
         ))}
         <li>
-            <a href='#' className='next' onClick={() => increment(props.pageState.pageNumber, props.pageCount, props.changePage, leftBorder, rightBorder)}>&#62;</a>
+            <a href='#' className='next' onClick={() => increment(props.content.pageNumber, props.content.pageCount, props.setPage, leftBorder, rightBorder, props.content.query)}>&#62;</a>
         </li>
         <li>
-            <a href='#' className='last-page' onClick={() => props.changePage(props.pageCount, (props.pageCount - 10 > 0 ? props.pageCount - 10 : 1), props.pageCount)}>&#8811;</a>
+            <a href='#' className='last-page' onClick={() => props.setPage(props.content.pageCount, (props.content.pageCount - 10 > 0 ? props.content.pageCount - 10 : 1), props.content.pageCount, props.content.query)}>&#8811;</a>
         </li>
     </ul>
     )}

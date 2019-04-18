@@ -5,6 +5,9 @@ import Header from './Header';
 
 import '../styles/index.css';
 
+const ASC_ORDER = "ASC";
+const DESC_ORDER = "DESC";
+
 class Table extends React.Component {
     render() {
         return(
@@ -12,24 +15,21 @@ class Table extends React.Component {
                 <Header 
                     setPage={this.props.setPage} 
                     searchShow={this.props.searchShow} 
-                    changePage={this.props.changePage} 
-                    pageCount={this.props.pageCount} 
-                    pageState={this.props.pageState} 
-                    query={this.props.query} 
+                    content={this.props.content}
                 />
                 <table>
                     <thead className='table-header'>
                         <tr className='thead-row'>
                             <th className='thead-cell'>&#8470;</th>
                             <th className='thead-cell'>Poster</th>
-                            <th className='thead-cell' onClick={this.props.sortByTitle}>Title</th>
+                            <th className='thead-cell' onClick={() => this.props.sortByTitle(this.props.sort.fieldName, this.props.sort.type)}>Title</th>
                             <th className='thead-cell'>Genres</th>
-                            <th className='thead-cell' onClick={this.props.sortByYear}>Year</th>
+                            <th className='thead-cell' onClick={() => this.props.sortByYear(this.props.sort.fieldName, this.props.sort.type)}>Year</th>
                             <th className='thead-cell'>Country</th>
                         </tr>
                     </thead>
                     <tbody className='table-body'>
-                        {this.props.data.map((item, index) => (
+                        {applySortRules(this.props.content.data, this.props.sort.fieldName, this.props.sort.type).map((item, index) => (
                             <tr className='tbody-row'>
                                 <td className='tbody-cell'>{index + 1}</td>
                                 <td className='tbody-cell'>
@@ -49,3 +49,48 @@ class Table extends React.Component {
 }
 
 export default Table;
+
+//general function to define when and how to sort by year and by title
+const applySortRules = (data, fieldName, type) => {
+    if(!fieldName || !type) {
+        return data
+    }
+    // console.log(this.state.sortRules);
+    if (fieldName === "year") {
+        if (type === ASC_ORDER) {
+           return data.sort(((a, b) => a.show.year - b.show.year))
+        } else if (type === DESC_ORDER) {
+            return data.sort(((a, b) => b.show.year - a.show.year))
+        } else {
+            console.log("Error occured in applySortRules with year sorting")
+        }
+    }
+
+    if (fieldName === "title") {
+        if (type === ASC_ORDER) {
+            const compare = (a, b) => {
+                if (a.show.title > b.show.title) {
+                    return 1;
+                }
+                if (a.show.title < b.show.title) {
+                    return -1;
+                }
+                return 0;
+            };
+            return data.sort(compare);
+        } else if (type === DESC_ORDER) {
+            const compareReverse = (a, b) => {
+                if (a.show.title > b.show.title) {
+                    return -1;
+                }
+                if (a.show.title < b.show.title) {
+                    return 1;
+                }
+                return 0;
+            };
+            return data.sort(compareReverse);
+        } else {
+            console.log("Error occured in applySortRules with title sorting")
+        }
+    }
+}
