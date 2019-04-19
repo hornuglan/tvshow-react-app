@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// import Header from './Header';
 import Table from './Table';
 import { setPage } from '../store/actions/allActions/contentAction';
 import { sortByYear, sortByTitle } from '../store/actions/allActions/sortActions';
@@ -17,9 +16,9 @@ class App extends React.Component {
 
     //page rendering
     render() {
-        // eslint-disable-next-line no-unused-vars
-        const { isLoading, data } = this.props.content;
+        const { isLoading } = this.props.content;
 
+        //showing spinner loader while data loading
         if (isLoading) return <div className='lds-ripple'><div></div><div></div></div>;
 
         return (

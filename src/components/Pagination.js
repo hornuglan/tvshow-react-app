@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-// import { setPage } from '../store/actions/allActions/contentAction';
 
 //function to define when to renew pagination line
 const pageRange = (targetPage, leftBorder, rightBorder, pageCount) => {
@@ -34,7 +33,7 @@ const increment = (targetPage, pageCount, setPage, leftBorder, rightBorder, quer
     setPage(targetPage - 1, leftBorder, rightBorder, query);
   }
 
-
+//rendering pagination list - page numbers, next and prev page arrows, the first and the last page arrows
 const Pagination = (props) => {
     const { leftBorder, rightBorder, range } = pageRange(props.content.pageNumber, props.content.leftBorder, props.content.rightBorder, props.content.pageCount);
     return (<ul className='pagination'>

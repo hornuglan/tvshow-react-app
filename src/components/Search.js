@@ -3,6 +3,7 @@ import React from 'react';
 class Search extends React.Component {
     queryRef = React.createRef();
 
+    //setting search using Enter key
     handleKeyPress = (event) => {
         if(event.charCode === 13) {
             this.props.setPage(1, 1, 10, this.queryRef.current.value);
@@ -10,6 +11,7 @@ class Search extends React.Component {
             console.log('Error in search using keycode');
         }
     }
+    //rendering search input
     render() {
         return(
             <div className='search'>

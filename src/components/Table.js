@@ -1,10 +1,10 @@
 import React from 'react';
 
-import App from './App';
 import Header from './Header';
 
 import '../styles/index.css';
 
+//declaring variables for setting ascending and descending sort order
 export const ASC_ORDER = "ASC";
 export const DESC_ORDER = "DESC";
 
@@ -55,7 +55,6 @@ export const applySortRules = (data, fieldName, type) => {
     if(!fieldName || !type) {
         return data
     }
-    // console.log(this.state.sortRules);
     if (fieldName === "year") {
         if (type === ASC_ORDER) {
            return data.sort(((a, b) => a.show.year - b.show.year))
