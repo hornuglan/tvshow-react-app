@@ -5,7 +5,7 @@ it('pageRange works if pageCount > 10', () => {
         "leftBorder": 1, 
         "range": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 
         "rightBorder": 10});
-});
+}); 
 
 it('pageRange works if pageCount == 10', () => {
     expect(pageRange(1, 1, 10, 10)).toEqual({

@@ -5,8 +5,8 @@ import Header from './Header';
 
 import '../styles/index.css';
 
-const ASC_ORDER = "ASC";
-const DESC_ORDER = "DESC";
+export const ASC_ORDER = "ASC";
+export const DESC_ORDER = "DESC";
 
 class Table extends React.Component {
     render() {
@@ -51,7 +51,7 @@ class Table extends React.Component {
 export default Table;
 
 //general function to define when and how to sort by year and by title
-const applySortRules = (data, fieldName, type) => {
+export const applySortRules = (data, fieldName, type) => {
     if(!fieldName || !type) {
         return data
     }
@@ -60,7 +60,7 @@ const applySortRules = (data, fieldName, type) => {
         if (type === ASC_ORDER) {
            return data.sort(((a, b) => a.show.year - b.show.year))
         } else if (type === DESC_ORDER) {
-            return data.sort(((a, b) => b.show.year - a.show.year))
+            return data.sort(((a, b) => b.show.year - a.show.year));
         } else {
             console.log("Error occured in applySortRules with year sorting")
         }
