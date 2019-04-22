@@ -167,12 +167,12 @@ img {
 /* styles for loader */
 .lds-ripple {
   display: inline-block;
-  position: relative;
+  /* position: relative; */
   width: 64px;
   height: 64px;
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 45%;
+  top: 45%;
 }
 .lds-ripple div {
   position: absolute;
