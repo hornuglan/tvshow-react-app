@@ -44,7 +44,7 @@ const Pagination = (props) => {
             <a href='#' className='prev' onClick={() => decrement(props.content.pageNumber, props.content.pageCount, props.setPage, leftBorder, rightBorder, props.content.query)}>&#60;</a>
         </li>
         {range.map((pageNumber) => (
-            <li>
+            <li key={pageNumber.toString()}>
                 <a href='#' onClick={() => props.setPage(pageNumber, leftBorder, rightBorder, props.content.query)}>{pageNumber}</a>
             </li>
         ))}

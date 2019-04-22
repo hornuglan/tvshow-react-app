@@ -35,7 +35,7 @@ export const setPage = (pageNumber, leftBorder, rightBorder, query) => {
             .then(([pageCount, data, ...responses]) => {
                 responses.forEach((posterData) => {
                     if (posterData.tvposter) {
-                        const showRecord = data.find(element => element.show.ids.tvdb == posterData.thetvdb_id);
+                        const showRecord = data.find(element => element.show.ids.tvdb === +posterData.thetvdb_id);
                         showRecord.poster = posterData.tvposter[0].url;
                     }
                 })

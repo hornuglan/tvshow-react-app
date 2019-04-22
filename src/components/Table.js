@@ -30,7 +30,7 @@ class Table extends React.Component {
                     </thead>
                     <tbody className='table-body'>
                         {applySortRules(this.props.content.data, this.props.sort.fieldName, this.props.sort.type).map((item, index) => (
-                            <tr className='tbody-row'>
+                            <tr className='tbody-row' key={index.toString()}>
                                 <td className='tbody-cell'>{index + 1}</td>
                                 <td className='tbody-cell'>
                                     <img className='poster' alt='' src={item.poster} />
