@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/tvshows-react-app/static/js/runtime~main.de279a21.js"
   },
   {
-    "revision": "29dc2d424d500062ca79",
+    "revision": "55c22e2851a2abc10adb",
     "url": "/tvshows-react-app/static/js/main.2606665b.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/tvshows-react-app/static/js/2.f4da12b7.chunk.js"
   },
   {
-    "revision": "29dc2d424d500062ca79",
-    "url": "/tvshows-react-app/static/css/main.212ed37a.chunk.css"
+    "revision": "55c22e2851a2abc10adb",
+    "url": "/tvshows-react-app/static/css/main.497a1c58.chunk.css"
   },
   {
-    "revision": "ab6fb37328da43d08dbf95e1f9a9bf8e",
+    "revision": "1251d674259dde2b392a6413c69595ac",
     "url": "/tvshows-react-app/index.html"
   }
 ];
