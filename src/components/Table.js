@@ -33,8 +33,8 @@ class Table extends React.Component {
                             <tr className='tbody-row' key={index.toString()}>
                                 <td className='tbody-cell'>{index + 1}</td>
                                 <td className='tbody-cell'>
-                                    <img className='poster' alt='' src={item.poster} />
-                                </td>
+                                    <img className='poster' alt='' src={item.poster ? item.poster : 'https://pixabay.com/get/e83cb1082ffd033ed1584d05fb0938c9bd22ffd41cb4174197f6c87caf/page-not-found-1907792_1280.jpg'} />
+                                 </td>
                                 <td className='tbody-cell'>{item.show.title ? item.show.title : ''}</td>
                                 <td className='tbody-cell'>{item.show.genres ? (item.show.genres).join(', ') : ''}</td>
                                 <td className='tbody-cell'>{item.show.year ? item.show.year : ''}</td>
