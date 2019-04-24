@@ -45,7 +45,9 @@ const Pagination = (props) => {
         </li>
         {range.map((pageNumber) => (
             <li key={pageNumber.toString()}>
-                <a href='#' onClick={() => props.setPage(pageNumber, leftBorder, rightBorder, props.content.query)}>{pageNumber}</a>
+                <a href='#'
+                style={pageNumber === props.content.pageNumber ? {backgroundColor: 'rgba(255,255,255,.85)', color: 'rgba(38, 50, 56, 0.8)'} : {}}
+                onClick={() => props.setPage(pageNumber, leftBorder, rightBorder, props.content.query)}>{pageNumber}</a>
             </li>
         ))}
         <li>

@@ -109,15 +109,11 @@ html, body {
   min-height:44px;
   color: rgba(255,255,255,.85);  
   box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.35);
+  /* background-color: rgba(38, 50, 56, 0.8); */
 }
 
 .pagination li a:hover { 
   background-color: rgba(255,255,255,.2);
-}
-
-/* styles for filter */
-select {
-  width: 100%;
 }
 
 /* general styles for table */
@@ -152,6 +148,7 @@ table, tr, th, td {
 
 img {
   width: 320px;
+  height: 456px;
   vertical-align: middle;
 }
 
