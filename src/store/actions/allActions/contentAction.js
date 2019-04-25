@@ -14,7 +14,7 @@ export const setPage = (pageNumber, leftBorder, rightBorder, query) => {
         return fetch(createUrl(pageNumber, query), headers())
             .then(
                 (response) => {
-                    const pageCount = response.headers.get('X-Pagination-Page-Count');
+                    const pageCount = response.headers.get('X-Pagination-Page-Count'); 
                     const pageCountPromise = new Promise((resolve) => resolve(pageCount));
                     return Promise.all([pageCountPromise, response.json()])
                 },
@@ -54,7 +54,7 @@ export const setPage = (pageNumber, leftBorder, rightBorder, query) => {
     }
 }
 
-const createUrl = (pageNumber, query) => {
+export const createUrl = (pageNumber, query) => {
     //generating search request, adding page number or query for search if necessary
     //to the first if - || query !== undefined
     if (pageNumber && (query !== '')) {
