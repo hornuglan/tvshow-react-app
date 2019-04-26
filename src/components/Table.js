@@ -24,9 +24,17 @@ class Table extends React.Component {
                         <tr className='thead-row'>
                             <th className='thead-cell'>&#8470;</th>
                             <th className='thead-cell'>Poster</th>
-                            <th className='thead-cell' onClick={() => this.props.sortByTitle(this.props.sort.fieldName, this.props.sort.type)}>Title</th>
+                            <th className='thead-cell' 
+                            title='To sort A-Z click once. To sort Z-A click twice'
+                            onClick={() => this.props.sortByTitle(this.props.sort.fieldName, this.props.sort.type)}>
+                            Title
+                            </th>
                             <th className='thead-cell'>Genres</th>
-                            <th className='thead-cell' onClick={() => this.props.sortByYear(this.props.sort.fieldName, this.props.sort.type)}>Year</th>
+                            <th className='thead-cell' 
+                            title='To sort in ascending order click once. To sort in descending order click twice'
+                            onClick={() => this.props.sortByYear(this.props.sort.fieldName, this.props.sort.type)}>
+                            Year
+                            </th>
                             <th className='thead-cell'>Country</th>
                         </tr>
                     </thead>
